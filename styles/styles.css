@@ -148,8 +148,10 @@ section{
 
 .container-pais-lupa{
     display: flex;
-    
- 
+}
+
+.lista_produtos{
+    gap: 2rem;
 }
 
 .container-pagamentos p {
@@ -161,35 +163,14 @@ section{
 
 .container-pagamentos {
     display: flex;
-    justify-content: space-between;
-    padding-left: 5rem;    
-    padding-right: 5rem;
+    justify-content: center;
+    gap: 12rem;    
     height: 9rem;
     align-items: center;
 }
 
 .container-pagamentos img{
     width: 3rem;
-}
-
-#seta1 {
-    position: absolute;
-    padding: 10px;
-    box-shadow: 2px -2px 0 1px;
-    border: solid transparent;
-    border-width: 0 0 2px 2px;
-    transform: rotate(45deg);
-    margin: 0 -50px;
-}
-
-#seta2 {
-    position: absolute;
-    padding: 10px;
-    box-shadow: 2px -2px 0 1px;
-    border: solid transparent;
-    border-width: 0 0 2px 2px;
-    transform: rotate(-135deg);
-    margin:0 50px;
 }
 
 .container-sapatilhas {
@@ -253,6 +234,16 @@ label{
     color: rgba(113, 109, 109, 1);
 }
 
+.icon_destaque{
+    display: flex;
+    justify-content: center;
+}
+
+.banner_main{
+    width: 100%;
+    height: auto;
+}
+
 footer p{
     color: rgba(113, 109, 109, 1)
 }
@@ -279,6 +270,8 @@ footer p{
     opacity: 50%;
 }
 
+
+
 /* CSS dos Componentes do Projeto - Utilize o inspecionar elementos antes de modificar os valores */
 
 .container-flex {
@@ -294,7 +287,8 @@ footer p{
 .carrousel {
     display: flex;
     transition: transform 0.5s ease;
-    column-gap: 16px;
+    column-gap: 8rem;
+    justify-content: center;
 }
 
 .main-text{
