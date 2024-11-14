@@ -17,11 +17,11 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
     {
         codigoProduto:2,
         tituloProduto:"Collant - Pink - Adulto FP711 PROMOCIONAL", 
-        preco: 300.00, 
+        preco: 300.00, "Collant - Rosa - Adulto FP711 PROMOCIONAL",
         descricao:"Collant macio e com a melhor qualidade para você entregar seu melhor na dança",
         imagemProduto: {
             img1:"./images/products/collan_rosa.png",
-            img2:"./images/products/prod02/img2.png",
+            img2:"./images/products/prod01/img2.png",
             img3:"./images/products/prod02/img3.png",
             img4:"./images/products/prod02/img4.png",
     },
@@ -36,7 +36,7 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
         descricao:"Collant macio e com a melhor qualidade para você entregar seu melhor na dança",
         imagemProduto: {
             img1:".",
-            img2:"./images/products/prod02/img2.png",
+            img2:"./images/products/prod01/img2.png",
             img3:"./images/products/prod02/img3.png",
             img4:"./images/products/prod02/img4.png",
         },
@@ -67,7 +67,7 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
         descricao:"Collant macio e com a melhor qualidade para você entregar seu melhor na dança",
         imagemProduto: {
             img1:"./images/products/collan_rosa.png",
-            img2:"./images/products/prod02/img2.png",
+            img2:"./images/products/prod01/img2.png",
             img3:"./images/products/prod02/img3.png",
             img4:"./images/products/prod02/img4.png",
 
