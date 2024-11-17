@@ -681,6 +681,7 @@ footer p{
 .product.text-container p {
     font-size: 0.875em;
     padding: 10px 0px;
+    color: black;
 }
 
 .cart_item {
