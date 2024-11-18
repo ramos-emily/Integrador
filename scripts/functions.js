@@ -73,8 +73,7 @@ export function loadProduct(produto, selecaoProduto) {
  <ul>
    <li><img src="${produto.imagemProduto.img1}" alt="" class="product_thumb"></li>
    <li><img src="${produto.imagemProduto.img2}" alt="" class="product_thumb"></li>
-   <li><img src="${produto.imagemProduto.img3}" alt="" class="product_thumb"></li>
-   <li><img src="${produto.imagemProduto.img4}" alt="" class="product_thumb"></li>
+
  </ul>
  <i class="bi bi-chevron-double-down"></i>
  </div>

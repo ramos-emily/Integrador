@@ -7,8 +7,6 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
         imagemProduto: {
             img1:"./images/products/collan_preto.png",
             img2:"./images/products/collan_rosa.png",
-            img3:"./images/products/collan_pink.png",
-            img4:"./images/products/collan_vermelho.png",
         },
         categoriaProduto: 'collans',
         classificacaoProduto:"Novidades",
@@ -16,14 +14,12 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
     },
     {
         codigoProduto:2,
-        tituloProduto:"Collant - Pink - Adulto FP711 PROMOCIONAL", 
-        preco: 300.00, "Collant - Rosa - Adulto FP711 PROMOCIONAL",
+        tituloProduto: "Collant - Pink - Adulto FP711 PROMOCIONAL", 
+        preco: 300.00,
         descricao:"Collant macio e com a melhor qualidade para você entregar seu melhor na dança",
         imagemProduto: {
             img1:"./images/products/collan_rosa.png",
             img2:"./images/products/prod01/img2.png",
-            img3:"./images/products/prod02/img3.png",
-            img4:"./images/products/prod02/img4.png",
     },
         categoriaProduto: 'collans',
         classificacaoProduto:"Novidades",
@@ -37,29 +33,13 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
         imagemProduto: {
             img1:".",
             img2:"./images/products/prod01/img2.png",
-            img3:"./images/products/prod02/img3.png",
-            img4:"./images/products/prod02/img4.png",
+
         },
         categoriaProduto: 'collans',
         classificacaoProduto:"Novidades",
         exibirHome: false
     },
-    {
-        codigoProduto:4,
-        tituloProduto:"Collant - Rosa - Adulto FP711 PROMOCIONAL", 
-        preco: 300.00, 
-        descricao:"Collant macio e com a melhor qualidade para você entregar seu melhor na dança",
-        imagemProduto: {
-            img1:"./images/products/collan_pink.png",
-            img2:"./images/products/prod02/img2.png",
-            img3:"./images/products/prod02/img3.png",
-            img4:"./images/products/prod02/img4.png",
-
-        },
-        categoriaProduto: 'collans',
-        classificacaoProduto:"Promocoes",
-        exibirHome:false
-    },
+    
     {
         codigoProduto:5,
         tituloProduto:"Collant - Rosa - Adulto FP711 PROMOCIONAL", 
@@ -68,8 +48,7 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
         imagemProduto: {
             img1:"./images/products/collan_rosa.png",
             img2:"./images/products/prod01/img2.png",
-            img3:"./images/products/prod02/img3.png",
-            img4:"./images/products/prod02/img4.png",
+
 
         },
         categoriaProduto: 'collans',
@@ -84,8 +63,7 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
         imagemProduto: {
             img1:"./images/products/collan_pink.png",
             img2:"./images/products/prod02/img2.png",
-            img3:"./images/products/prod02/img3.png",
-            img4:"./images/products/prod02/img4.png",
+
 
         },
         categoriaProduto: 'collans',
@@ -100,8 +78,6 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
         imagemProduto: {
             img1:"./images/products/collan_vermelho.png",
             img2:"./images/products/prod02/img2.png",
-            img3:"./images/products/prod02/img3.png",
-            img4:"./images/products/prod02/img4.png",
 
         },
         categoriaProduto: 'collans',
@@ -116,8 +92,6 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
     //     imagemProduto: {
     //         img1:"./images/products/collan_vermelho.png",
     //         img2:"./images/products/prod02/img2.png",
-    //         img3:"./images/products/prod02/img3.png",
-    //         img4:"./images/products/prod02/img4.png",
 
     //     },
     //     categoriaProduto: 'collans',
@@ -132,8 +106,7 @@ export const database = [ /* "Banco de dados" de produtos comercializados no sit
         imagemProduto: {
             img1:"./images/products/collan_preto.png",
             img2:"./images/products/prod02/img2.png",
-            img3:"./images/products/prod02/img3.png",
-            img4:"./images/products/prod02/img4.png",
+
 
         },
         categoriaProduto: 'collans',

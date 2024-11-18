@@ -254,7 +254,7 @@ label{
 .icon_destaque{
     justify-content: center;
     padding-top: 3rem;
-    padding-left: 50rem;
+    padding-left:55rem;
 }
 
 .icon_destaque h1{
@@ -856,6 +856,27 @@ footer p{
 .order-card ul:nth-of-type(2){
     display: flex;
     flex-direction: column;
+}
+
+
+.nos{
+    padding-left: 10rem;
+    padding-right: 10rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobre_nos h1{
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+.sobre_nos h2{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3rem;
+
 }
 
 
