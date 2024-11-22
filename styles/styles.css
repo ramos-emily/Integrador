@@ -549,8 +549,8 @@ footer p{
 .product_description_container p{
    line-height: 24px;
    padding-bottom: 32px;
+   color: black;
 }
-
 
 
 .product_price_container {
@@ -570,7 +570,7 @@ footer p{
     font-weight: 400;
     padding-bottom: 10px;
     line-height: 18px;
-
+    color: black;
 }
 
 .quantity {
@@ -589,7 +589,7 @@ footer p{
 
 .shop_btn {
     padding: 16px 32px;
-    color: black;
+    color: white
     border-radius: 5px;
     border: none;
     text-transform: uppercase;
@@ -640,7 +640,7 @@ footer p{
  }
 
  .freight_pricing {
-    background-color: #E7ECFF;
+    background-color: #000000;
     border: 1px solid ;
     padding: 16px 16px;
     border-radius: 5px;
@@ -653,35 +653,38 @@ footer p{
     font-size: 1em;
     font-weight: 700;
     line-height: 18px;
-    
+    color: white;
 }
 
 .pricing p{
     font-size: 0.875em;
     font-weight: 400;
     line-height: 18px;
-    
+    color: white;
 }
 
 .freight_pricing:nth-child(4){
-    background-color: #EAFFE7;
+    background-color: black;
    
 }
 
 .freight_pricing:nth-child(5){
-    background-color: #FFFDE7;
+    background-color:black;
    
 }
 
 .freight_pricing:nth-child(6){
-    background-color: #FFF2E7;
+    background-color: black;
    
 }
 
 .product.text-container p {
     font-size: 0.875em;
     padding: 10px 0px;
-    color: black;
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: center;
 }
 
 .cart_item {
@@ -772,9 +775,9 @@ footer p{
     }
 
 .total {
-        padding-bottom: 10px;
+    padding-bottom: 10px;
 
-    }
+}
 
 .total:nth-child(2) h3{
     font-size: 14px;
@@ -877,6 +880,14 @@ footer p{
     justify-content: center;
     padding-bottom: 3rem;
 
+}
+
+.product-card, .idprod {
+    height: 100%;
+}
+
+.carrousel-image {
+    height: 50rem;
 }
 
 

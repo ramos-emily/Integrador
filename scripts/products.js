@@ -1,4 +1,3 @@
-
 import { database } from "./database.js";
 import { getProdId, loadProducts} from "./functions.js";
 

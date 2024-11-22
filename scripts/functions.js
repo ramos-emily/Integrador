@@ -10,6 +10,7 @@ export function loadProducts(productList, load) {
           <img id="${produto.codigoProduto}"
             src="${produto.imagemProduto.img1}"
             alt="${produto.tituloProduto}"
+            class="carrousel-image"
           />
         </div>
         <div class="product-card-info-container">
