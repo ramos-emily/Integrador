@@ -75,35 +75,64 @@
           </div>
       </header>
       <!--fim-->
-<main>
-    <h2>Cadastre-se</h2>
-    <form>
-        <div>
+<main class="forms_main">
+    <h2>Fale Conosco</h2>
+    <form class="forms">
+        <div class="forms_all">
             <!-- nome tem que estar igual -->
-            <label for="name">Seu nome:</label>
+            <label for="name">Seu nome: <br></label>
             <input type="text" name="name" id="" placeholder="Digite seu melhor nome">
-            </div>
-        <div>
-            <label for="email">Digite seu email</label>
+        <div class="forms_email">
+            <label for="email">Digite seu email<br></label>
             <input type="email" name="email">
         </div>
-        <div>
-            <h4>Input tipo password</h4>
-            <label for="password">Digite sua senha</label>
-            <input type="password" name="password" id="">
-        </div>
-        <div>
-            <label for="Nascimento">data de nacs</label>
-            <input type="date" name="Nascimento" id="">
-        </div>
-        <div>
-            <h4>Onde vc mora?</h4>
+        <div class="forms_all">
+          <label for="name">Telefone<br></label>
+          <input type="text" name="name" id="">
+        </div>        
+        <div class="forms_all">
+            <h4>Estado</h4>
             <select name="moradia" id=""> 
-                <option value="rua">Na rua</option>
-                <option value="casa">Na minha casa</option>
-                <option value="fazenda">Fazenda</option>
+                <option value="acre">AC</option>
+                <option value="alagoas">AL</option>
+                <option value="Amapa">AP</option>
+                <option value="amazonas">AM</option>
+                <option value="bahia">BA</option>
+                <option value="ceara">CE</option>
+                <option value="distrito federal">DF</option>
+                <option value="espirito santo">ES</option>
+                <option value="Goiania">GO</option>
+                <option value="maranhao">MA</option>
+                <option value="mato grosso">MT</option>
+                <option value="mato grosso do sul">MS</option>
+                <option value="minas gerais">MG</option>
+                <option value="pará">PA</option>
+                <option value="paraiba">PB</option>
+                <option value="parana">PR</option>
+                <option value="pernambuco">PE</option>
+                <option value="piaui">PI</option>
+                <option value="rio de janeiro">RJ</option>
+                <option value="rio grande do norte">RN</option>
+                <option value="rio grande do sul">RS</option>
+                <option value="santa catarina">SC</option>
+                <option value="sao paulo">SP</option>
+                <option value="Sergipe">SE</option>
+                <option value="Tocantins">TO</option>
             </select>
         </div>
+        <div class="forms_all">
+          <label for="name">CEP<br></label>
+          <input type="text" name="name" id="">
+        </div>
+        <div class="forms_all">
+          <label for="name">Assunto<br></label>
+          <input type="text" name="name" id="">
+        </div>
+        <div class="forms_mensage">
+          <label for="name">Sua mensagem<br></label>
+          <input type="text" name="name" id="">
+        </div>
+        <button>Enviar</button>
     </form>
 </main>
       <!--rodape-->

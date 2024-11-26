@@ -891,9 +891,46 @@ footer p{
 }
 
 
+.forms{
+    display: flex;
+    justify-content: center;
+    background-color:#f1efef;
+
+}
+
+.forms_main{
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+
+}
+
+.forms_main h2{
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 5rem;
+
+}
+
+.forms_all input, option{
+    width: 600px;
+    height: 60px;
+    color: black;
+}
 
 
+.forms_all h4{
+    color: #000000;
+}
 
+.forms_mensage input{
+    width: 600px;
+    height: 200px;
+}
+
+.forms_main button{
+    color: #000000;
+}
 
 
 
