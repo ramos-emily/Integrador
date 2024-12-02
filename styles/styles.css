@@ -752,7 +752,9 @@ footer p{
 
 .cart_item_qtd_selector_container span{
     padding: 3px 24px;
+    color: black;
 }
+
 
 .bi::before, [class*=" bi-"]::before, [class^=bi-]::before
 {
@@ -933,6 +935,10 @@ footer p{
 }
 
 
+.freight_ok{
+    color: white;
+    background-color: black;
+}
 
 
 
