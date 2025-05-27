@@ -1,13 +1,13 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { Navbar } from './components/Navbar'
 
-import { Login } from './pages/Login'
-import { Cadastro } from './pages/Register'
+import { Login } from './pages/login'
+import { Cadastro } from './pages/cadastro'
 
-import { Ambiente } from './pages/Environment'
-import { Home } from './pages/Map'
-import { Sensores } from './pages/Sensor'
-import { Historico } from './pages/History'
+import { Ambiente } from './pages/ambiente'
+import { Home } from './pages/home'
+import { Sensores } from './pages/sensores'
+import { Historico } from './pages/historico'
 
 import './App.css'
 
