@@ -1,0 +1,59 @@
+.InfoBar {
+    background-color: rgb(182, 144, 144);
+    display: flex;
+    justify-content: space-between;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #ffe600;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+header h2 {
+  margin: 5px 0 15px;
+  font-size: 1.2em;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+}
+
+main {
+  padding: 20px;
+}
+
+section, article, aside {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+}
