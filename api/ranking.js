@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       }
       
       const scoreNum = Number(score)
-      if (isNaN(scoreNum) {
+      if (isNaN(scoreNum)) {
         return res.status(400).json({ error: "Pontuação inválida" })
       }
 
