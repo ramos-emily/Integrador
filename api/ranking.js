@@ -1,178 +1,77 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Verificação inicial das variáveis de ambiente
-if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
-  console.error('Erro crítico: Variáveis do Supabase não configuradas!')
-  throw new Error('Configuração do Supabase incompleta')
-}
+// Inicializa o cliente Supabase
+const supabaseUrl = process.env.SUPABASE_URL || "https://dyohgtppkfaajrcvhxwi.supabase.co"
+const supabaseKey = process.env.SUPABASE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5b2hndHBwa2ZhYWpyY3ZoeHdpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5Mjk4NDksImV4cCI6MjA3MDUwNTg0OX0.VpqTveVNn9Dmq7EGYqihUbMYem6wvzb7gC3cLnsfV9o"
 
-const supabaseUrl = process.env.SUPABASE_URL
-const supabaseKey = process.env.SUPABASE_KEY
+console.log("🔍 SUPABASE_URL definida?", !!supabaseUrl)
+console.log("🔍 SUPABASE_KEY definida?", !!supabaseKey)
+
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-// Verifica a conexão com o Supabase no startup
-async function testSupabaseConnection() {
-  try {
-    const { data, error } = await supabase
-      .from('rankings')
-      .select('*')
-      .limit(1)
-      
-    if (error) throw error
-    console.log('Conexão com Supabase verificada com sucesso')
-  } catch (err) {
-    console.error('Falha na conexão com Supabase:', err.message)
-    throw new Error('Falha na conexão com o banco de dados')
-  }
-}
-
-// Executa o teste de conexão quando o módulo é carregado
-testSupabaseConnection().catch(err => {
-  console.error('Erro durante o teste de conexão:', err)
-})
-
 export default async function handler(req, res) {
-  // Configuração COMPLETA de CORS - ESSENCIAL PARA FUNCIONAR
-  const allowedOrigins = [
-    'https://ets65.vercel.app',
-    'http://localhost:3000' // Para desenvolvimento local
-  ]
-  
-  const origin = req.headers.origin
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin)
-  }
-  
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  res.setHeader('Access-Control-Allow-Credentials', 'true')
-  res.setHeader('Vary', 'Origin') // Importante para cache de CORS
-
-  // Resposta imediata para requisições OPTIONS (Preflight)
-  if (req.method === 'OPTIONS') {
-    return res.status(200).json({
-      status: 'success',
-      message: 'CORS preflight successful'
-    })
-  }
-
   try {
-    // POST - Adicionar nova pontuação
+    // --- CORS ---
+    const allowedOrigins = [
+      'https://ets65.vercel.app',
+      'http://localhost:3000'
+    ]
+    const origin = req.headers.origin
+    if (allowedOrigins.includes(origin)) {
+      res.setHeader('Access-Control-Allow-Origin', origin)
+    }
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
+    res.setHeader('Vary', 'Origin')
+
+    if (req.method === 'OPTIONS') {
+      return res.status(200).end()
+    }
+
+    // --- POST: Salvar pontuação ---
     if (req.method === 'POST') {
-      // Verifica o corpo da requisição
-      if (!req.body || typeof req.body !== 'object') {
-        return res.status(400).json({ 
-          status: 'error',
-          error: "Corpo da requisição inválido" 
-        })
+      const { name, score, time } = req.body || {}
+      if (!name || typeof name !== 'string' || !score || typeof score !== 'number' || time === undefined) {
+        return res.status(400).json({ status: 'error', error: 'Dados inválidos' })
       }
 
-      const { name, score, time } = req.body
+      const { data, error } = await supabase
+        .from('rankings')
+        .insert([{
+          name: name.trim().substring(0, 50),
+          score: Math.min(Number(score), 999999),
+          time: String(time).substring(0, 20)
+        }])
+        .select()
 
-      // Validação dos dados
-      if (!name || typeof name !== 'string' || name.trim().length === 0) {
-        return res.status(400).json({ 
-          status: 'error',
-          error: "Nome inválido - deve ser uma string não vazia" 
-        })
+      if (error) {
+        console.error('Erro ao inserir no Supabase:', error)
+        return res.status(500).json({ status: 'error', error: error.message })
       }
 
-      if (score === undefined || typeof score !== 'number' || score < 0) {
-        return res.status(400).json({ 
-          status: 'error',
-          error: "Pontuação inválida - deve ser um número positivo" 
-        })
-      }
-
-      if (time === undefined || (typeof time !== 'string' && typeof time !== 'number')) {
-        return res.status(400).json({ 
-          status: 'error',
-          error: "Tempo inválido - deve ser string ou número" 
-        })
-      }
-
-      // Insere no banco de dados
-      try {
-        const { data, error } = await supabase
-          .from('rankings')
-          .insert([{ 
-            name: name.trim().substring(0, 50), // Limita o tamanho do nome
-            score: Math.min(Number(score), 999999), // Limita pontuação máxima
-            time: String(time).substring(0, 20) // Limita tamanho do tempo
-          }])
-          .select()
-
-        if (error) {
-          console.error('Erro no Supabase (insert):', error)
-          return res.status(500).json({ 
-            status: 'error',
-            error: "Erro ao salvar pontuação",
-            details: error.message 
-          })
-        }
-
-        return res.status(200).json({ 
-          status: 'success',
-          message: "Pontuação salva com sucesso",
-          data: data[0]
-        })
-
-      } catch (dbError) {
-        console.error('Erro no banco de dados:', dbError)
-        return res.status(500).json({ 
-          status: 'error',
-          error: "Erro interno no servidor",
-          details: dbError.message
-        })
-      }
+      return res.status(200).json({ status: 'success', data: data[0] })
     }
 
-    // GET - Obter ranking
+    // --- GET: Obter ranking ---
     if (req.method === 'GET') {
-      try {
-        const { data, error } = await supabase
-          .from('rankings')
-          .select('*')
-          .order('score', { ascending: false })
-          .limit(10)
+      const { data, error } = await supabase
+        .from('rankings')
+        .select('*')
+        .order('score', { ascending: false })
+        .limit(10)
 
-        if (error) {
-          console.error('Erro no Supabase (select):', error)
-          return res.status(500).json({ 
-            status: 'error',
-            error: "Erro ao obter ranking",
-            details: error.message
-          })
-        }
-
-        return res.status(200).json({ 
-          status: 'success',
-          data: data || []
-        })
-
-      } catch (dbError) {
-        console.error('Erro no banco de dados:', dbError)
-        return res.status(500).json({ 
-          status: 'error',
-          error: "Erro interno no servidor",
-          details: dbError.message
-        })
+      if (error) {
+        console.error('Erro ao buscar no Supabase:', error)
+        return res.status(500).json({ status: 'error', error: error.message })
       }
+
+      return res.status(200).json({ status: 'success', data: data })
     }
 
-    // Método não permitido
-    return res.status(405).json({
-      status: 'error',
-      error: `Método ${req.method} não permitido`,
-      allowed: ['GET', 'POST', 'OPTIONS']
-    })
-
-  } catch (globalError) {
-    console.error('Erro global no handler:', globalError)
-    return res.status(500).json({
-      status: 'error',
-      error: "Erro interno no servidor",
-      details: process.env.NODE_ENV === 'development' ? globalError.message : undefined
-    })
+    return res.status(405).json({ status: 'error', error: 'Método não permitido' })
+  } catch (err) {
+    console.error('Erro global:', err)
+    return res.status(500).json({ status: 'error', error: err.message })
   }
 }
