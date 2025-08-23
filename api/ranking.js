@@ -17,17 +17,21 @@ export default async function handler(req, res) {
     try {
       const { name, score, time, character } = req.body
 
-      if (!name || typeof name !== 'string' || name.trim().length === 0) return res.status(400).json({ error: "Nome inválido" })
-      if (!character || !["masc","fem"].includes(character)) return res.status(400).json({ error: "Personagem inválido" })
+      if (!name || typeof name !== 'string' || name.trim().length === 0)
+        return res.status(400).json({ error: "Nome inválido" })
+      if (!character || !["masc","fem"].includes(character))
+        return res.status(400).json({ error: "Personagem inválido" })
       const scoreNum = Number(score)
+      const timeNum = Number(time)
       if (isNaN(scoreNum)) return res.status(400).json({ error: "Pontuação inválida" })
+      if (isNaN(timeNum)) return res.status(400).json({ error: "Tempo inválido" })
 
       const { error: insertError } = await supabase
         .from('rankings')
         .insert([{
           name: name.trim().substring(0,50),
           score: Math.min(scoreNum, 999999),
-          time: String(time).substring(0,20),
+          time: timeNum,
           character: character
         }])
 
