@@ -22,14 +22,21 @@ export default async function handler(req, res) {
     try {
       const { name, score, time } = req.body
       
-      // Validação melhorada
+      // Validação do nome
       if (!name || typeof name !== 'string' || name.trim().length === 0) {
         return res.status(400).json({ error: "Nome inválido" })
       }
-      
+
+      // Validação da pontuação
       const scoreNum = Number(score)
       if (isNaN(scoreNum)) {
         return res.status(400).json({ error: "Pontuação inválida" })
+      }
+
+      // Validação do tempo
+      const timeNum = Number(time)
+      if (isNaN(timeNum)) {
+        return res.status(400).json({ error: "Tempo inválido" })
       }
 
       // Insere e retorna o ranking atualizado
@@ -38,16 +45,17 @@ export default async function handler(req, res) {
         .insert([{ 
           name: name.trim().substring(0, 50),
           score: Math.min(scoreNum, 999999),
-          time: String(time).substring(0, 20)
+          time: timeNum
         }])
 
       if (insertError) throw insertError
 
-      // Busca ranking atualizado
+      // Busca ranking atualizado com desempate no tempo
       const { data: rankings, error: selectError } = await supabase
         .from('rankings')
         .select('*')
-        .order('score', { ascending: false })
+        .order('score', { ascending: false }) // maior score primeiro
+        .order('time', { ascending: true })   // menor tempo desempata
         .limit(10)
 
       if (selectError) throw selectError
@@ -69,6 +77,7 @@ export default async function handler(req, res) {
         .from('rankings')
         .select('*')
         .order('score', { ascending: false })
+        .order('time', { ascending: true })
         .limit(10)
 
       if (error) throw error
@@ -82,3 +91,5 @@ export default async function handler(req, res) {
 
   return res.status(405).end(`Método ${req.method} não permitido`)
 }
+
+
